@@ -1,51 +1,51 @@
 State,2020 Real per capita personal income,2015 Real per capita personal income,2015-2020 Real per capita personal income change (%),state_code
-Alabama,"$46,963","$41,926",12.0%,AL
-Alaska,"$55,470","$53,609",3.5%,AK
-Arizona,"$45,193","$39,329",14.9%,AZ
-Arkansas,"$47,765","$43,089",10.9%,AR
-California,"$57,347","$48,575",18.1%,CA
-Colorado,"$55,911","$49,383",13.2%,CO
-Connecticut,"$68,533","$61,871",10.8%,CT
-Delaware,"$51,689","$47,220",9.5%,DE
-Florida,"$49,853","$43,534",14.5%,FL
-Georgia,"$49,392","$42,879",15.2%,GA
-Hawaii,"$47,234","$42,336",11.6%,HI
-Idaho,"$48,216","$40,757",18.3%,ID
-Illinois,"$56,482","$50,813",11.2%,IL
-Indiana,"$50,624","$45,053",12.4%,IN
-Iowa,"$52,969","$50,056",5.8%,IA
-Kansas,"$54,773","$49,429",10.8%,KS
-Kentucky,"$47,551","$42,077",13.0%,KY
-Louisiana,"$49,483","$44,592",11.0%,LA
-Maine,"$50,516","$44,529",13.4%,ME
-Maryland,"$56,578","$50,858",11.2%,MD
-Massachusetts,"$65,853","$58,562",12.5%,MA
-Michigan,"$51,071","$45,208",13.0%,MI
-Minnesota,"$56,696","$52,075",8.9%,MN
-Mississippi,"$43,284","$38,639",12.0%,MS
-Missouri,"$50,404","$45,282",11.3%,MO
-Montana,"$52,054","$44,386",17.3%,MT
-Nebraska,"$55,891","$53,583",4.3%,NE
-Nevada,"$49,914","$43,639",14.4%,NV
-New Hampshire,"$58,342","$52,085",12.0%,NH
-New Jersey,"$59,594","$53,956",10.4%,NJ
-New Mexico,"$45,637","$39,234",16.3%,NM
-New York,"$60,936","$52,126",16.9%,NY
-North Carolina,"$49,396","$43,210",14.3%,NC
-North Dakota,"$60,286","$57,067",5.6%,ND
-Ohio,"$52,758","$46,935",12.4%,OH
-Oklahoma,"$49,254","$47,257",4.2%,OK
-Oregon,"$49,485","$43,335",14.2%,OR
-Pennsylvania,"$57,030","$49,769",14.6%,PA
-Rhode Island,"$53,859","$47,781",12.7%,RI
-South Carolina,"$47,252","$41,141",14.9%,SC
-South Dakota,"$58,414","$53,420",9.3%,SD
-Tennessee,"$49,955","$44,487",12.3%,TN
-Texas,"$49,945","$46,510",7.4%,TX
-Utah,"$49,388","$40,460",22.1%,UT
-Vermont,"$53,726","$48,206",11.5%,VT
-Virginia,"$55,333","$49,040",12.8%,VA
-Washington,"$56,385","$49,959",12.9%,WA
-West Virginia,"$46,130","$40,061",15.1%,WV
-Wisconsin,"$53,798","$48,623",10.6%,WI
-Wyoming,"$60,463","$57,154",5.8%,WY
+Alabama,46963,41926,12.0%,AL
+Alaska,55470,53609,3.5%,AK
+Arizona,45193,39329,14.9%,AZ
+Arkansas,47765,43089,10.9%,AR
+California,57347,48575,18.1%,CA
+Colorado,55911,49383,13.2%,CO
+Connecticut,68533,61871,10.8%,CT
+Delaware,51689,47220,9.5%,DE
+Florida,49853,43534,14.5%,FL
+Georgia,49392,42879,15.2%,GA
+Hawaii,47234,42336,11.6%,HI
+Idaho,48216,40757,18.3%,ID
+Illinois,56482,50813,11.2%,IL
+Indiana,50624,45053,12.4%,IN
+Iowa,52969,50056,5.8%,IA
+Kansas,54773,49429,10.8%,KS
+Kentucky,47551,42077,13.0%,KY
+Louisiana,49483,44592,11.0%,LA
+Maine,50516,44529,13.4%,ME
+Maryland,56578,50858,11.2%,MD
+Massachusetts,65853,58562,12.5%,MA
+Michigan,51071,45208,13.0%,MI
+Minnesota,56696,52075,8.9%,MN
+Mississippi,43284,38639,12.0%,MS
+Missouri,50404,45282,11.3%,MO
+Montana,52054,44386,17.3%,MT
+Nebraska,55891,53583,4.3%,NE
+Nevada,49914,43639,14.4%,NV
+New Hampshire,58342,52085,12.0%,NH
+New Jersey,59594,53956,10.4%,NJ
+New Mexico,45637,39234,16.3%,NM
+New York,60936,52126,16.9%,NY
+North Carolina,49396,43210,14.3%,NC
+North Dakota,60286,57067,5.6%,ND
+Ohio,52758,46935,12.4%,OH
+Oklahoma,49254,47257,4.2%,OK
+Oregon,49485,43335,14.2%,OR
+Pennsylvania,57030,49769,14.6%,PA
+Rhode Island,53859,47781,12.7%,RI
+South Carolina,47252,41141,14.9%,SC
+South Dakota,58414,53420,9.3%,SD
+Tennessee,49955,44487,12.3%,TN
+Texas,49945,46510,7.4%,TX
+Utah,49388,40460,22.1%,UT
+Vermont,53726,48206,11.5%,VT
+Virginia,55333,49040,12.8%,VA
+Washington,56385,49959,12.9%,WA
+West Virginia,46130,40061,15.1%,WV
+Wisconsin,53798,48623,10.6%,WI
+Wyoming,60463,57154,5.8%,WY
