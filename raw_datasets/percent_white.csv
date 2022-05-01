@@ -1,52 +1,52 @@
-State,Value
-Alabama,65.4
-Alaska,60.3
-Arizona,54.4
-Arkansas,72.2
-California,36.8
-Colorado,67.9
-Connecticut,66.5
-Delaware,61.9
-District of Columbia,37.1
-Florida,53.5
-Georgia,52.4
-Hawaii,21.8
-Idaho,81.7
-Illinois,61.0
-Indiana,78.9
-Iowa,85.3
-Kansas,75.7
-Kentucky,84.3
-Louisiana,58.6
-Maine,93.1
-Maryland,50.5
-Massachusetts,71.4
-Michigan,74.9
-Minnesota,79.5
-Mississippi,56.5
-Missouri,79.3
-Montana,85.9
-Nebraska,78.6
-Nevada,48.7
-New Hampshire,90.0
-New Jersey,54.9
-New Mexico,37.1
-New York,55.4
-North Carolina,62.8
-North Dakota,84.0
-Ohio,78.7
-Oklahoma,65.3
-Oregon,75.3
-Pennsylvania,76.1
-Rhode Island,72.0
-South Carolina,63.7
-South Dakota,81.4
-Tennessee,73.7
-Texas,41.5
-Utah,78.0
-Vermont,92.5
-Virginia,61.5
-Washington,68.0
-West Virginia,92.1
-Wisconsin,81.1
-Wyoming,83.8
+State,Value,state_code
+Alabama,65.4,AL
+Alaska,60.3,AK
+Arizona,54.4,AZ
+Arkansas,72.2,AR
+California,36.8,CA
+Colorado,67.9,CO
+Connecticut,66.5,CT
+Delaware,61.9,DE
+District of Columbia,37.1,DC
+Florida,53.5,FL
+Georgia,52.4,GA
+Hawaii,21.8,HI
+Idaho,81.7,ID
+Illinois,61.0,IL
+Indiana,78.9,IN
+Iowa,85.3,IA
+Kansas,75.7,KS
+Kentucky,84.3,KY
+Louisiana,58.6,LA
+Maine,93.1,ME
+Maryland,50.5,MD
+Massachusetts,71.4,MA
+Michigan,74.9,MI
+Minnesota,79.5,MN
+Mississippi,56.5,MS
+Missouri,79.3,MO
+Montana,85.9,MT
+Nebraska,78.6,NE
+Nevada,48.7,NV
+New Hampshire,90.0,NH
+New Jersey,54.9,NJ
+New Mexico,37.1,NM
+New York,55.4,NY
+North Carolina,62.8,NC
+North Dakota,84.0,ND
+Ohio,78.7,OH
+Oklahoma,65.3,OK
+Oregon,75.3,OR
+Pennsylvania,76.1,PA
+Rhode Island,72.0,RI
+South Carolina,63.7,SC
+South Dakota,81.4,SD
+Tennessee,73.7,TN
+Texas,41.5,TX
+Utah,78.0,UT
+Vermont,92.5,VT
+Virginia,61.5,VA
+Washington,68.0,WA
+West Virginia,92.1,WV
+Wisconsin,81.1,WI
+Wyoming,83.8,WY

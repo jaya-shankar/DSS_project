@@ -1,52 +1,52 @@
-State,Value
-Alabama,2.55
-Alaska,2.81
-Arizona,2.69
-Arkansas,2.52
-California,2.96
-Colorado,2.56
-Connecticut,2.54
-Delaware,2.58
-District of Columbia,2.29
-Florida,2.65
-Georgia,2.71
-Hawaii,3.02
-Idaho,2.68
-Illinois,2.59
-Indiana,2.53
-Iowa,2.41
-Kansas,2.52
-Kentucky,2.49
-Louisiana,2.61
-Maine,2.33
-Maryland,2.67
-Massachusetts,2.53
-Michigan,2.49
-Minnesota,2.49
-Mississippi,2.62
-Missouri,2.47
-Montana,2.39
-Nebraska,2.46
-Nevada,2.68
-New Hampshire,2.46
-New Jersey,2.71
-New Mexico,2.64
-New York,2.60
-North Carolina,2.52
-North Dakota,2.31
-Ohio,2.43
-Oklahoma,2.58
-Oregon,2.51
-Pennsylvania,2.46
-Rhode Island,2.47
-South Carolina,2.54
-South Dakota,2.43
-Tennessee,2.53
-Texas,2.86
-Utah,3.13
-Vermont,2.31
-Virginia,2.61
-Washington,2.55
-West Virginia,2.42
-Wisconsin,2.40
-Wyoming,2.46
+State,Value,state_code
+Alabama,2.55,AL
+Alaska,2.81,AK
+Arizona,2.69,AZ
+Arkansas,2.52,AR
+California,2.96,CA
+Colorado,2.56,CO
+Connecticut,2.54,CT
+Delaware,2.58,DE
+District of Columbia,2.29,DC
+Florida,2.65,FL
+Georgia,2.71,GA
+Hawaii,3.02,HI
+Idaho,2.68,ID
+Illinois,2.59,IL
+Indiana,2.53,IN
+Iowa,2.41,IA
+Kansas,2.52,KS
+Kentucky,2.49,KY
+Louisiana,2.61,LA
+Maine,2.33,ME
+Maryland,2.67,MD
+Massachusetts,2.53,MA
+Michigan,2.49,MI
+Minnesota,2.49,MN
+Mississippi,2.62,MS
+Missouri,2.47,MO
+Montana,2.39,MT
+Nebraska,2.46,NE
+Nevada,2.68,NV
+New Hampshire,2.46,NH
+New Jersey,2.71,NJ
+New Mexico,2.64,NM
+New York,2.6,NY
+North Carolina,2.52,NC
+North Dakota,2.31,ND
+Ohio,2.43,OH
+Oklahoma,2.58,OK
+Oregon,2.51,OR
+Pennsylvania,2.46,PA
+Rhode Island,2.47,RI
+South Carolina,2.54,SC
+South Dakota,2.43,SD
+Tennessee,2.53,TN
+Texas,2.86,TX
+Utah,3.13,UT
+Vermont,2.31,VT
+Virginia,2.61,VA
+Washington,2.55,WA
+West Virginia,2.42,WV
+Wisconsin,2.4,WI
+Wyoming,2.46,WY
