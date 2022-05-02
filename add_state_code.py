@@ -58,7 +58,7 @@ state_code  =  {
     "Guam":"GU"
 }
 
-paths = ["raw_datasets/avg_income.csv","raw_datasets/percent_white.csv","raw_datasets/persons_per_household.csv","raw_datasets/percent_above_65_age.csv","raw_datasets/mean_travel_time.csv","raw_datasets/percent_in_poverty.csv"]
+paths = ["raw_datasets/us-counties.csv","raw_datasets/avg_income.csv","raw_datasets/percent_white.csv","raw_datasets/persons_per_household.csv","raw_datasets/percent_above_65_age.csv","raw_datasets/mean_travel_time.csv","raw_datasets/percent_in_poverty.csv"]
 
 for path in paths:
     df  = pd.read_csv(path)
@@ -66,7 +66,7 @@ for path in paths:
     if "state_code" in cloumns:
         continue
     # add state code column to dataframe
-    df = df.assign(state_code=df["State"].map(state_code))
+    df = df.assign(state_code=df["state"].map(state_code))
     
     df.to_csv(path, index=False)
         
