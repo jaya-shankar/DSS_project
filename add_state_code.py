@@ -58,7 +58,7 @@ state_code  =  {
     "Guam":"GU"
 }
 
-paths = ["raw_datasets/avg_income.csv","raw_datasets/percent_white.csv","raw_datasets/persons_per_household.csv","raw_datasets/percent_above_65_age.csv"]
+paths = ["raw_datasets/avg_income.csv","raw_datasets/percent_white.csv","raw_datasets/persons_per_household.csv","raw_datasets/percent_above_65_age.csv","raw_datasets/mean_travel_time.csv"]
 
 for path in paths:
     df  = pd.read_csv(path)

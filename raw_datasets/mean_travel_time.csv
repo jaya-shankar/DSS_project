@@ -1,52 +1,52 @@
-State,Value
-Alabama,24.7
-Alaska,18.8
-Arizona,25.3
-Arkansas,21.7
-California,29.3
-Colorado,25.5
-Connecticut,26.3
-Delaware,25.8
-District of Columbia,30.3
-Florida,27.4
-Georgia,28.4
-Hawaii,27.4
-Idaho,20.7
-Illinois,29.0
-Indiana,23.6
-Iowa,19.1
-Kansas,19.3
-Kentucky,23.3
-Louisiana,25.5
-Maine,24.0
-Maryland,32.9
-Massachusetts,29.7
-Michigan,24.5
-Minnesota,23.5
-Mississippi,24.6
-Missouri,23.6
-Montana,18.0
-Nebraska,18.6
-Nevada,24.3
-New Hampshire,27.3
-New Jersey,31.7
-New Mexico,22.1
-New York,33.3
-North Carolina,24.5
-North Dakota,17.1
-Ohio,23.5
-Oklahoma,21.7
-Oregon,23.7
-Pennsylvania,26.9
-Rhode Island,24.8
-South Carolina,24.6
-South Dakota,17.0
-Tennessee,25.0
-Texas,26.4
-Utah,21.7
-Vermont,22.9
-Virginia,28.4
-Washington,27.6
-West Virginia,25.8
-Wisconsin,22.0
-Wyoming,17.8
+State,Value,state_code
+Alabama,24.7,AL
+Alaska,18.8,AK
+Arizona,25.3,AZ
+Arkansas,21.7,AR
+California,29.3,CA
+Colorado,25.5,CO
+Connecticut,26.3,CT
+Delaware,25.8,DE
+District of Columbia,30.3,DC
+Florida,27.4,FL
+Georgia,28.4,GA
+Hawaii,27.4,HI
+Idaho,20.7,ID
+Illinois,29.0,IL
+Indiana,23.6,IN
+Iowa,19.1,IA
+Kansas,19.3,KS
+Kentucky,23.3,KY
+Louisiana,25.5,LA
+Maine,24.0,ME
+Maryland,32.9,MD
+Massachusetts,29.7,MA
+Michigan,24.5,MI
+Minnesota,23.5,MN
+Mississippi,24.6,MS
+Missouri,23.6,MO
+Montana,18.0,MT
+Nebraska,18.6,NE
+Nevada,24.3,NV
+New Hampshire,27.3,NH
+New Jersey,31.7,NJ
+New Mexico,22.1,NM
+New York,33.3,NY
+North Carolina,24.5,NC
+North Dakota,17.1,ND
+Ohio,23.5,OH
+Oklahoma,21.7,OK
+Oregon,23.7,OR
+Pennsylvania,26.9,PA
+Rhode Island,24.8,RI
+South Carolina,24.6,SC
+South Dakota,17.0,SD
+Tennessee,25.0,TN
+Texas,26.4,TX
+Utah,21.7,UT
+Vermont,22.9,VT
+Virginia,28.4,VA
+Washington,27.6,WA
+West Virginia,25.8,WV
+Wisconsin,22.0,WI
+Wyoming,17.8,WY
