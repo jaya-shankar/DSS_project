@@ -1,6 +1,6 @@
 def find_top_confirmed(n = 15):
     import pandas as pd
-    corona_df = pd.read_csv('C:/Users/Keerthi/Downloads/covid19.csv')
+    corona_df = pd.read_csv('/content/DSS_project/sample-ds/covid19.csv')
     corona_df=corona_df[corona_df['Country_Region']=='US']
     by_state = corona_df.groupby('Province_State').sum()[['Confirmed', 'Deaths', 'Recovered', 'Active']]
     cdf = by_state.nlargest(n, 'Confirmed')[['Confirmed']]
@@ -9,7 +9,7 @@ cdf=find_top_confirmed()
 pairs=[(Province_State,confirmed) for Province_State,confirmed in zip(cdf.index,cdf['Confirmed'])]
 import folium
 import pandas as pd
-corona_df = pd.read_csv('C:/Users/Keerthi/Downloads/covid19.csv')
+corona_df = pd.read_csv('/content/DSS_project/sample-ds/covid19.csv')
 corona_df=corona_df[corona_df['Country_Region']=='US']
 
 corona_df=corona_df[['Lat','Long_','Confirmed']]
