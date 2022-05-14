@@ -66,8 +66,9 @@ paths = [
 #          "raw_datasets/percent_above_65_age.csv",
 #          "raw_datasets/mean_travel_time.csv",
 #          "raw_datasets/percent_in_poverty.csv",
-         "raw_datasets/avg_temp.csv",
-         "raw_datasets/avg_wind_speed.csv",
+        #  "raw_datasets/avg_temp.csv",
+        #  "raw_datasets/avg_wind_speed.csv",
+        "raw_datasets/us_state_vaccinations.csv"
          ]
 
 for path in paths:
@@ -77,7 +78,7 @@ for path in paths:
     if "state_code" in cloumns:
         continue
     # add state code column to dataframe
-    df = df.assign(state_code=df["State"].map(state_code))
+    df = df.assign(state_code=df["location"].map(state_code))
     
     df.to_csv(path, index=False)
         
