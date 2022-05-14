@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+    <h1>COVID-19 Risk assessment</h1>
+  <div class="row">
+    
+    <div class="col-4">
+        <h5><font color="red">Top 15 States</font></h5>
+        <p>This data comes from a resource</p>
+        <table class="table-responsive-sm table-dark">
+        <thead>
+            <tr>
+            <th scope="col">State</th>
+            <th scope="col">Confirmed</tr>
+                </tr>
+        </thead>
+        <tbody>
+    {% for pair in pairs %}
+    <tr>
+    <td>{{ pair[0]}}</td>
+    <td>{{ pair[1]}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table></div>
+    <div class="col-8">
+        <h5><font color="firebrick">USA map of corona cases</font></h5>
+        {{cmap|safe}}</div>
+        
+  </div>
+</div>
+{% endblock %}
