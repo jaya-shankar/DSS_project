@@ -6,10 +6,12 @@
     <div class="col-8">
         <h5><font color="firebrick">Enter the input for estimation of risk</font></h5>
         <form action = "http://localhost:5000/result" method = "POST">
-         <p>Population <input type = "number" name = "Population" /></p>
-         <p>Hospitals <input type = "number" name = "Hospitals" /></p>
-         <p>Average income <input type = "number" name = "Income" /></p>
-         <p>Poverty level <input type ="number" name = "Poverty" /></p>
+          <p>State Code <input type = "text" name="stateCode"></p>
+         <p>Cases <input type = "number" name = "cases" /></p>
+         <p>Currently in ICU <input type = "number" name = "icu_patients" /></p>
+         <p>Currently in Ventilator<input type = "number" name = "ventilator_patients" /></p>
+         <p>Currently in Hospital<input type = "number" name = "patients" /></p>
+         <p>No of Fully Vaccinated <input type ="number" name = "vaccinated" /></p>
          <p><input type = "submit" value = "submit" /></p>
       </form>
         

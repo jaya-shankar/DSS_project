@@ -1,4 +1,10 @@
+from tensorflow.keras.models import load_model
+
 covid19_csv_path = './covid19.csv'
+general_csv_path = './combined_general_data.csv'
+#load saved model
+loaded_model = load_model('./my_saved_model')
+loaded_model.compile(metrics=['accuracy'])
 
 def find_top_confirmed(n = 15):
     import pandas as pd
@@ -50,10 +56,29 @@ def home():
 def result():
     data={}
     if request.method == 'POST':
-        data['population']=request.form['Population']
-        data['hospitals']=request.form['Hospitals']
-        data['income']=request.form['Income']
+        
+        data['state_code']=request.form['stateCode']
+        data['cases']=request.form['cases']
+        data['CurrentlyInICU']=request.form['icu_patients']
+        data['CurrentlyOnVentilator']=request.form['ventilator_patients']
+        data['CurrentHospitalizations']=request.form['patients']
+        data['people_fully_vaccinated']=request.form['vaccinated']
         todos.insert_one(data)
+        data['risk_level'] = predict_risk(data)
+        if data['risk_level'] == -1:
+            return render_template("error.html",result = {"message":"State not found"})
         return render_template("result.html",result = data)
+    
+def predict_risk(data):
+    general_df = pd.read_csv(general_csv_path)
+    try:
+        general_df = general_df[general_df['state_code']==data['state_code']]
+    except:
+        return -1
+    specific_df= pd.DataFrame(data,index=[0])
+    combined_df = pd.concat([general_df,specific_df],axis=1)
+    risk_level = loaded_model.predict(combined_df)
+    return risk_level
+
 if __name__=="__main__":
     app.run(debug=True)
