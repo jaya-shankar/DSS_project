@@ -4,6 +4,12 @@
   <div class="row">
     
     <div class="col-4">
+        <form action="" method="post">
+          <!-- input form for date -->
+          <input type="date" id="date" name="date" value="{{ date }}" min="2021-01-12" max="2022-03-31" onchange="">
+          <!-- submit button -->
+          <button type="submit">Submit</button>
+        </form>
         <h5><font color="red">Top 15 States</font></h5>
         <p>This data comes from a resource</p>
         <table class="table-responsive-sm table-dark">
