@@ -5,3 +5,24 @@ body {
 h1, td, tr {
     color: white;
 }
+
+form
+{
+  display: inline-block;
+  background-color: gold;
+  padding: 6px;
+  color: black;
+}
+
+label{
+  display: block;
+  direction: rtl; 
+}
+
+input{
+  direction: ltr; 
+}
+
+label::after{
+  content: attr(data-text);
+}
