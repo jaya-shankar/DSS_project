@@ -81,10 +81,10 @@ def result():
         data['CurrentlyOnVentilator']=request.form['ventilator_patients']
         data['CurrentHospitalizations']=request.form['patients']
         data['people_fully_vaccinated']=request.form['vaccinated']
-        todos.insert_one(data)
         data['risk_level'] = predict_risk(data)
         if data['risk_level'] == -1:
             return render_template("error.html",result = {"message":"State not found"})
+        todos.insert_one(data)
         return render_template("result.html",result = data)
     
 def predict_risk(data):
