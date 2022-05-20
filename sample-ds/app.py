@@ -4,6 +4,7 @@ import pandas as pd
 from flask import Flask,render_template,request
 from pymongo import MongoClient
 from state_codes import state_code_name_map
+import pickle
 
 general_csv_path    = './combined_general_data.csv'
 final_combined_path = './final_combined_df.csv'
@@ -11,6 +12,8 @@ final_combined_path = './final_combined_df.csv'
 #load saved model
 # loaded_model = load_model('./my_saved_model')
 # loaded_model.compile(metrics=['accuracy'])
+
+loaded_model = pickle.load(open('./model.pkl','rb'))
 
 def find_confirmed_cases(date):
     df = pd.read_csv(final_combined_path)
@@ -77,11 +80,12 @@ def result():
         
         data['state_code']=request.form['stateCode']
         data['cases']=request.form['cases']
+        data['deaths']=request.form['deaths']
         data['CurrentlyInICU']=request.form['icu_patients']
         data['CurrentlyOnVentilator']=request.form['ventilator_patients']
         data['CurrentHospitalizations']=request.form['patients']
         data['people_fully_vaccinated']=request.form['vaccinated']
-        todos.insert_one(data)
+        # todos.insert_one(data)
         data['risk_level'] = predict_risk(data)
         if data['risk_level'] == -1:
             return render_template("error.html",result = {"message":"State not found"})
@@ -91,12 +95,17 @@ def predict_risk(data):
     general_df = pd.read_csv(general_csv_path)
     try:
         general_df = general_df[general_df['state_code']==data['state_code']]
+        general_df.drop(columns=['state_code'],inplace=True)
+        general_df.index = range(len(general_df))
     except:
         return -1
     specific_df= pd.DataFrame(data,index=[0])
-    combined_df = pd.concat([general_df,specific_df],axis=1)
+    combined_df = pd.concat([general_df, specific_df], axis=1)
+    combined_df = combined_df[["cases","deaths","no_of_hospitals","miles_of_road","percent_democrat","population","avg_income","mean_travel_time","above_65","percent_white","persons_per_household","percent_in_poverty","avg_wind_speed","avg_temp","people_fully_vaccinated","CurrentHospitalizations","CurrentlyInICU","CurrentlyOnVentilator"]]
+    # 
+    
     risk_level = loaded_model.predict(combined_df)
-    return risk_level
+    return int(risk_level[0])
 
 def get_state_name(state_code):
     return state_code_name_map[state_code]
