@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+    <h1>COVID-19 Risk assessment</h1>
+  <div class="row">
+
+    <div class="col-8">
+        <h5><font color="firebrick">Select the factors you want to remove</font></h5>
+        <form method = "POST" >
+            {% for factor in factors %}
+            <div style="margin-bottom: 10px">
+                <input type = "checkbox" name="factor" class="factor" value="{{ factor }}">
+                <label for="{{ factor }}" style="display: inline; direction: rtl; "> {{ factor }}</label><br>
+            </div>
+             {% endfor %}
+             <p><input type = "submit" value = "submit" id="submit" /></p>     
+        </form>
+        
+    </div>
+        
+  </div>
+</div>
+{% endblock %}

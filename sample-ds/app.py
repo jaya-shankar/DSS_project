@@ -1,19 +1,26 @@
+from locale import normalize
 from tensorflow.keras.models import load_model
 import folium
 import pandas as pd
 from flask import Flask,render_template,request
 from pymongo import MongoClient
 from state_codes import state_code_name_map
+from build_model import build_rf_model
 import pickle
 
-general_csv_path    = './combined_general_data.csv'
-final_combined_path = './final_combined_df.csv'
+
+general_csv_path            = './datasets/combined_general_data.csv'
+final_combined_path         = './datasets/final_combined_df_train.csv'
+normalized_combined_path    = './datasets/normalized_combined.csv'
 
 #load saved model
 # loaded_model = load_model('./my_saved_model')
 # loaded_model.compile(metrics=['accuracy'])
 
-loaded_model = pickle.load(open('./model.pkl','rb'))
+model = pickle.load(open('./model.pkl','rb'))
+
+def get_state_name(state_code):
+    return state_code_name_map[state_code]
 
 def find_confirmed_cases(date):
     df = pd.read_csv(final_combined_path)
@@ -39,6 +46,57 @@ def circle_maker(x,m):
                  weight=1,
                  popup=get_state_name(x.state_code)+'\nconfirmed cases:{}'.format(x.cases)).add_to(m)
     
+def fetch_factors():
+    df = pd.read_csv(final_combined_path)
+    df.drop(columns=['state_code','date','lat','long','Unnamed: 0'],inplace=True)
+    factors = df.columns.tolist()
+    return factors
+
+def add_risk_value(nor_df,dp_w):
+    nor_df['risk_level'] = (nor_df['cases']*dp_w['cases']+
+                    nor_df['deaths']*dp_w['deaths']+
+                    nor_df['CurrentHospitalizations']*dp_w['CurrentHospitalizations']+
+                    nor_df['CurrentlyInICU']*dp_w['CurrentlyInICU']+
+                    nor_df['CurrentlyOnVentilator']*dp_w['CurrentlyOnVentilator']+
+                    (1-nor_df['people_fully_vaccinated'])*dp_w['people_fully_vaccinated']+
+                    (1-nor_df['no_of_hospitals'])*dp_w['no_of_hospitals']+
+                    nor_df['population']*dp_w['population']+
+                    nor_df['persons_per_household']*dp_w['persons_per_household']+
+                    nor_df['above_65']*dp_w['above_65']+
+                    nor_df['avg_income']*dp_w['avg_income']+
+                    nor_df['percent_in_poverty']*dp_w['percent_in_poverty']+
+                    nor_df['mean_travel_time']*dp_w['mean_travel_time']+
+                    (1-nor_df['miles_of_road'])*dp_w['miles_of_road']+
+                    nor_df['avg_wind_speed']*dp_w['avg_wind_speed']+
+                    nor_df['avg_temp']*dp_w['avg_temp']+
+                    nor_df['percent_democrat']*dp_w['percent_democrat']+
+                    nor_df['percent_white']*dp_w['percent_white'])
+    return nor_df
+
+
+def divide_risk_values(nor_df):
+    print(type(nor_df))
+    risk_range = {1: 7,
+              2: 9,
+              3: 20,
+              4: 30,
+              5: 56
+            }
+    return risk_range
+
+
+def decide_category(v,risk_range):
+    
+    if v<=risk_range[1]:
+            return 1
+    elif v<=risk_range[2]:
+        return 2
+    elif v<=risk_range[3]:
+        return 3
+    elif v<=risk_range[4]:
+        return 4
+    else:
+        return 5
 
 
 client=MongoClient('localhost',27017)
@@ -70,9 +128,81 @@ def home():
             return render_template("statistics.html",table=top_15_states_df, cmap=html_map,pairs=pairs,date=date)
             pass # unknown
     elif request.method == 'GET':
-        return render_template('index.html')
+        return render_template('index.html',data = {})
     
-    return render_template("index.html")
+    return render_template("index.html",data = {})
+
+@app.route('/add_weight', methods=['GET', 'POST'])
+def add_weight():
+    if request.method == 'POST':
+        data = request.form
+        print(data)
+        dp_w = data.to_dict()
+        dp_w = {k:int(v)/100 for k,v in dp_w.items()}
+        print(dp_w)
+       # normalize the values
+        df = pd.read_csv(final_combined_path)
+        no_normalization_columns = {'date','state_code','lat','long'}
+        nor_df = df.copy()
+        columns = list(df.columns)
+        for column in columns:
+            if column in no_normalization_columns:
+                continue
+            nor_df[column] = (nor_df[column] - nor_df[column].min())/(nor_df[column].max() - nor_df[column].min())*100
+         # add new columns called risk_value to copy of df
+        nor_df = add_risk_value(nor_df,dp_w)
+        # nor_df.to_csv("tmp",index=False)
+        risk_range = divide_risk_values(nor_df['risk_level'])
+        # add new columns called risk_level to acutal dataframe
+        df['risk_level'] =nor_df['risk_level'].transform(lambda x: decide_category(x,risk_range))
+        # df.to_csv("tmp2",index=False)
+        # building model
+        df.dropna(inplace=True)
+        model,accuracy = build_rf_model(df)
+        data = {}
+        data['accuracy'] = round(accuracy*100,2)
+        print(accuracy)
+        return render_template("index.html",data=data)
+    else:
+        
+        factors = fetch_factors()
+        print(factors)
+        return render_template("add_weight.html",factors=factors)
+
+
+@app.route('/add_factor', methods=['GET', 'POST'])
+def add_dataset():
+    if request.method == 'POST':
+        f = request.files['file']
+        new_df = pd.read_csv(f)
+        # get filename without extension
+        filename = f.filename.split('.')[0]
+        #convert new_df to a dict
+        # new_df.set_index('state_code',inplace=True)
+        try:
+            df = pd.read_csv(final_combined_path)
+            df = pd.merge(df,new_df,on='state_code')
+            df.to_csv(final_combined_path,index=False)
+        except:
+            return render_template("error.html",result ={"message": "Error in merging the data"})
+        return render_template("index.html")
+    else:
+        return render_template("add_dataset.html")
+
+@app.route('/delete_factor', methods=['GET', 'POST'])
+def delete_factor():
+    if request.method =='POST':
+        #get checked values
+        factors = fetch_factors()
+        checked = request.form.getlist('factor')
+        df = pd.read_csv(final_combined_path)
+        df.drop(columns=checked,inplace=True)
+        df.to_csv(final_combined_path,index=False)
+        return render_template("delete_factor.html",factors=factors)
+    else:
+        factors = fetch_factors()
+        return render_template("delete_factor.html",factors=factors)
+    
 @app.route('/result',methods = ['POST', 'GET'])
 def result():
     data={}
@@ -104,11 +234,10 @@ def predict_risk(data):
     combined_df = combined_df[["cases","deaths","no_of_hospitals","miles_of_road","percent_democrat","population","avg_income","mean_travel_time","above_65","percent_white","persons_per_household","percent_in_poverty","avg_wind_speed","avg_temp","people_fully_vaccinated","CurrentHospitalizations","CurrentlyInICU","CurrentlyOnVentilator"]]
     # 
     
-    risk_level = loaded_model.predict(combined_df)
+    risk_level = model.predict(combined_df)
     return int(risk_level[0])
 
-def get_state_name(state_code):
-    return state_code_name_map[state_code]
+
     
 
 

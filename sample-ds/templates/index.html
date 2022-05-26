@@ -9,7 +9,16 @@
         <input type="submit" value="Estimate risk" name="action1"/>
         <br><br/>
         <input type="submit" value="Show statistics" name="action2" />
+        <br><br/>
+        <input type="submit" value="Change Weights" formmethod="GET" formaction="/add_weight" />
+        <br><br/>
+        <input type="submit" value="Add new parameter" formmethod="GET" formaction="/add_factor" />
+        <br><br/>
+        <input type="submit" value="Delete parameter" formmethod="GET" formaction="/delete_factor" />
+
+        
   </form>
+      <p>Model Accuracy  {{ data.accuracy }}</p>
   </div>
 </div>
 {% endblock %}
