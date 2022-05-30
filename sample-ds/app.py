@@ -192,7 +192,7 @@ def add_dataset():
             df.to_csv(final_combined_path,index=False)
         except:
             return render_template("error.html",result ={"message": "Error in merging the data"})
-        return render_template("index.html")
+        return render_template("index.html",data = {})
     else:
         return render_template("add_dataset.html")
 
@@ -205,7 +205,8 @@ def delete_factor():
         df = pd.read_csv(final_combined_path)
         df.drop(columns=checked,inplace=True)
         df.to_csv(final_combined_path,index=False)
-        return render_template("delete_factor.html",factors=factors)
+        factors = fetch_factors()
+        return render_template("index.html",data = {})
     else:
         factors = fetch_factors()
         return render_template("delete_factor.html",factors=factors)
