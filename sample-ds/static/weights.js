@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', function() {
             alert("The sum of all weights must be 100");
             return false;
         }
-        return false;
+        return true;
     };
 
     factors = document.getElementsByClassName('factor');

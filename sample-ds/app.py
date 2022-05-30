@@ -53,35 +53,42 @@ def fetch_factors():
     return factors
 
 def add_risk_value(nor_df,dp_w):
-    nor_df['risk_level'] = (nor_df['cases']*dp_w['cases']+
-                    nor_df['deaths']*dp_w['deaths']+
-                    nor_df['CurrentHospitalizations']*dp_w['CurrentHospitalizations']+
-                    nor_df['CurrentlyInICU']*dp_w['CurrentlyInICU']+
-                    nor_df['CurrentlyOnVentilator']*dp_w['CurrentlyOnVentilator']+
-                    (1-nor_df['people_fully_vaccinated'])*dp_w['people_fully_vaccinated']+
-                    (1-nor_df['no_of_hospitals'])*dp_w['no_of_hospitals']+
-                    nor_df['population']*dp_w['population']+
-                    nor_df['persons_per_household']*dp_w['persons_per_household']+
-                    nor_df['above_65']*dp_w['above_65']+
-                    nor_df['avg_income']*dp_w['avg_income']+
-                    nor_df['percent_in_poverty']*dp_w['percent_in_poverty']+
-                    nor_df['mean_travel_time']*dp_w['mean_travel_time']+
-                    (1-nor_df['miles_of_road'])*dp_w['miles_of_road']+
-                    nor_df['avg_wind_speed']*dp_w['avg_wind_speed']+
-                    nor_df['avg_temp']*dp_w['avg_temp']+
-                    nor_df['percent_democrat']*dp_w['percent_democrat']+
-                    nor_df['percent_white']*dp_w['percent_white'])
+    factors = fetch_factors()
+    nor_df['risk_level'] = 0
+    for f in factors:
+        nor_df['risk_level'] += nor_df[f]*dp_w[f]
+    # nor_df['risk_level'] = (nor_df['cases']*dp_w['cases']+
+    #                 nor_df['deaths']*dp_w['deaths']+
+    #                 nor_df['CurrentHospitalizations']*dp_w['CurrentHospitalizations']+
+    #                 nor_df['CurrentlyInICU']*dp_w['CurrentlyInICU']+
+    #                 nor_df['CurrentlyOnVentilator']*dp_w['CurrentlyOnVentilator']+
+    #                 (1-nor_df['people_fully_vaccinated'])*dp_w['people_fully_vaccinated']+
+    #                 (1-nor_df['no_of_hospitals'])*dp_w['no_of_hospitals']+
+    #                 nor_df['population']*dp_w['population']+
+    #                 nor_df['persons_per_household']*dp_w['persons_per_household']+
+    #                 nor_df['above_65']*dp_w['above_65']+
+    #                 nor_df['avg_income']*dp_w['avg_income']+
+    #                 nor_df['percent_in_poverty']*dp_w['percent_in_poverty']+
+    #                 nor_df['mean_travel_time']*dp_w['mean_travel_time']+
+    #                 (1-nor_df['miles_of_road'])*dp_w['miles_of_road']+
+    #                 nor_df['avg_wind_speed']*dp_w['avg_wind_speed']+
+    #                 nor_df['avg_temp']*dp_w['avg_temp']+
+    #                 nor_df['percent_democrat']*dp_w['percent_democrat']+
+    #                 nor_df['percent_white']*dp_w['percent_white'])
     return nor_df
 
 
 def divide_risk_values(nor_df):
-    print(type(nor_df))
-    risk_range = {1: 7,
-              2: 9,
-              3: 20,
-              4: 30,
-              5: 56
+    
+    nor_df.quantile(0.9)
+    print(nor_df)
+    risk_range = {1: nor_df.quantile(0.15),
+              2: nor_df.quantile(0.35),
+              3: nor_df.quantile(0.65),
+              4: nor_df.quantile(0.85),
+              5: nor_df.quantile(1)
             }
+    print(risk_range)
     return risk_range
 
 
